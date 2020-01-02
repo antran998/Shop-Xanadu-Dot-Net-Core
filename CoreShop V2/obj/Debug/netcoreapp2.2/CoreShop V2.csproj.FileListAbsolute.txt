@@ -1,0 +1,57 @@
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\libman.json
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\CoreShop V2.deps.json
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\CoreShop V2.runtimeconfig.json
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\CoreShop V2.runtimeconfig.dev.json
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\CoreShop V2.dll
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\CoreShop V2.pdb
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\CoreShop V2.Views.dll
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\bin\Debug\netcoreapp2.2\CoreShop V2.Views.pdb
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.RazorAssemblyInfo.cache
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.RazorAssemblyInfo.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.AssemblyInfo.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.TagHelpers.input.cache
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.TagHelpers.output.cache
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.RazorCoreGenerate.cache
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Dashboard\Dashboard.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Identity\Login.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Identity\ResetPasswordPage.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\MailChimpMgn\Index.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\MgnBill\BillManagement.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\MgnBill\GetBillDetail.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\MgnProductType\ProductTypeMgn.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\MgnProduct\ProductMgn.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\MgnRole\UserRoleMgn.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\MgnUser\UserMgn.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Shared\Error.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Shared\_Layout_Admin.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Twilio\SendSms.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Calculation\Cart.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Calculation\Checkout.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Calculation\Success.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Faq\Faq.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Home\Index.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\MailChimp\RegisterEmail.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Products\ProductDetail.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Products\Products.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Shared\Components\ShoppingCartSummary\Default.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Shared\Components\Submenu\Default.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Shared\Error.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\_ViewImports.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\Razor\Areas\Client\Views\_ViewStart.cshtml.g.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.RazorTargetAssemblyInfo.cache
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.RazorTargetAssemblyInfo.cs
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.Views.pdb
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.dll
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.pdb
+C:\Users\Admin\source\repos\CoreShop V2\CoreShop V2\obj\Debug\netcoreapp2.2\CoreShop V2.csproj.CopyComplete

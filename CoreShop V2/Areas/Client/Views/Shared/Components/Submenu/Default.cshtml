@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Category>
+
+@{
+    ViewData["Title"] = "SubMenu";
+}
+
+<li class="level1 dropdown hassub images">
+    <a asp-controller="products" asp-action="Products" title="Products">Products</a>
+    <i class="fa fa-plus"></i>
+    <div class="sub-menu sub-menu-v2 dropdown-menu" style="display: none;">
+        <ul class="menu-level-1 dropdown-menu" style="display: none;">
+            @foreach (var type in Model)
+            {
+                int i =0;
+                <li class="level2 hassub">
+                    <a href="~/products?sortOrder=@type.CategoryName">@type.CategoryName</a><i class="fa fa-plus"></i>
+                    <ul class="menu-level-2">
+                        @foreach (var item in type.product)
+                        {                            
+                            <li class="level3"><a href="~/product/@item.CategoryNameSeo/@item.ProductNameSeo" title="@item.ProductName">@item.ProductName</a><i class="fa fa-plus"></i></li>
+                            i++;
+                            if (i == 4) { break; }
+                        }                        
+                    </ul>
+                </li>
+            }            
+        </ul>
+        <div class="right-submenu">
+            <a href="#" title="images" class="images"><img class="img-responsive" src="assets/images/right-submenu.jpg" alt="Sub-Menu"></a><i class="fa fa-plus"></i>
+        </div>
+        <!-- End RightSubMenu -->
+    </div>
+    <!-- End Dropdow Menu -->
+</li>
+

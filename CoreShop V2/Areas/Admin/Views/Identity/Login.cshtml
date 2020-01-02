@@ -1,0 +1,244 @@
+﻿@model CoreShop_V2.Areas.Admin.ViewModel.IdentityViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+@section Css{
+    <link href="~/assets/css/login.css" asp-append-version="true" rel="stylesheet" />
+}
+
+<div class="container">
+    <div class="box"></div>
+    <div class="container-forms">
+        <div class="container-info">
+            <div class="info-item">
+                <div class="table">
+                    <div class="table-cell">
+                        <p>
+                            Have an account?
+                        </p>
+                        <div class="btn">
+                            Log in
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="table">
+                    <div class="table-cell">
+                        <p>
+                            Don't have an account?
+                        </p>
+                        <div class="btn" id="signForm">
+                            Sign up
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-form">
+            <div class="form-item log-in">
+                <div class="table">
+                    <div class="table-cell">
+                        <form method="post" asp-controller="Identity" asp-route-returnUrl="@Context.Request.Query["returnUrl"]" asp-action="LoginIn">
+                            <input asp-for="@Model.login.LoginEmail" placeholder="Username" type="text" />
+                            <span asp-validation-for="@Model.login.LoginEmail" class="text-danger"></span>
+                            <input asp-for="@Model.login.LoginPassword" placeholder="Password" type="Password" />
+                            <span asp-validation-for="@Model.login.LoginPassword" class="text-danger"></span>
+
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="@Model.login.RememberMe" />
+                                        @Html.DisplayNameFor(m => m.login.RememberMe)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="forget-pass">Forget your password ?</div>
+                            <div class="btn submit">
+                                Log in
+                            </div>
+                        </form>
+                        @{
+                            if (Model.login.ExternalLogins.Count == 0)
+                            {
+                                <div>No External Login Configured</div>
+                            }
+                            else
+                            {
+                                <form id="ex-login" method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.login.ReturnUrl">
+                                    <div>
+                                        @foreach (var provider in Model.login.ExternalLogins)
+                                        {
+                                            if (provider.DisplayName == "Google")
+                                            {
+                                                <button type="submit" class="external-button google-btn"
+                                                        name="provider" value="@provider.Name"
+                                                        title="Login using your @provider.DisplayName account">
+
+                                                    <img src="~/assets/images/external-login/google.png" />@provider.DisplayName
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <button type="submit" class="external-button facebook-btn"
+                                                        name="provider" value="@provider.Name"
+                                                        title="Login using your @provider.DisplayName account">
+
+                                                    <img src="~/assets/images/external-login/facebook.png" />@provider.DisplayName
+                                                </button>
+                                            }
+                                        }
+                                    </div>
+                                </form>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="form-item sign-up">
+                <div class="table">
+                    <form class="table-cell" method="post" asp-controller="identity" asp-route-returnUrl="@Context.Request.Query["returnUrl"]" asp-action="signup">
+                        <input asp-for="@Model.signup.CustomerName" placeholder="Full Name" type="text" />
+                        <span asp-validation-for="@Model.signup.CustomerName" class="text-danger"></span>
+                        <input asp-for="@Model.signup.CustomerAddress" placeholder="Adress" type="text" />
+                        <span asp-validation-for="@Model.signup.CustomerAddress" class="text-danger"></span>
+                        <input asp-for="@Model.signup.CustomerEmail" placeholder="Email" type="text" />
+                        <span asp-validation-for="@Model.signup.CustomerEmail" class="text-danger"></span>
+                        <input asp-for="@Model.signup.CustomerPhone" placeholder="Phone" type="text" />
+                        <span asp-validation-for="@Model.signup.CustomerPhone" class="text-danger"></span>
+                        <input asp-for="@Model.signup.Password" placeholder="Password" type="Password" />
+                        <span asp-validation-for="@Model.signup.Password" class="text-danger"></span>
+                        <input asp-for="@Model.signup.ConfirmPassword" placeholder="Confirm Password" type="Password" />
+                        <span asp-validation-for="@Model.signup.ConfirmPassword" class="text-danger"></span>
+                        <div class="btn submit">
+                            Sign up
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('.submit').click(function () {
+            var submit = $(this);
+            if ($(submit).parent("form").valid()) {
+                $(submit).parent("form").css("display", "none");
+                $("#ex-login").css("display", "none");
+                setTimeout(function () {
+                    $(submit).parent("form").submit();
+                }, 1000);
+            } else {
+                setTimeout(function () {
+                    $('.container').removeClass("active");
+                }, 10);
+            }
+        })
+
+        $(".info-item .btn").click(function () {
+            $(".container").toggleClass("log-in");
+        });
+        $(".container-form .btn").click(function () {
+            $(".container").addClass("active");
+        });
+    </script>
+    @if (!string.IsNullOrEmpty(Model.invalid))
+    {
+        <script>
+
+            $(function () {
+                history.pushState(null, null, window.location.pathname);
+                setTimeout(function () {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: '@Model.invalid',
+                        heightAuto: false
+                    })
+                }, 1000)
+            })
+        </script>
+    }
+    @if (!string.IsNullOrEmpty(Model.confirmed))
+    {
+        <script>
+
+            $(function () {
+                history.pushState(null, null, window.location.pathname);
+                setTimeout(function () {
+                    Swal.fire({
+                        type: 'success',
+                        position: 'top-end',
+                        title: '@Model.confirmed',
+                        heightAuto: false,
+                        showConfirmButton: false
+                    })
+                }, 1000)
+            })
+        </script>
+    }
+
+    <script>
+        $(function () {
+            if (window.location.href.indexOf("Signup") > -1 || window.location.href.indexOf("signup") > -1) {
+                setTimeout(function () {
+                    $("#signForm").click();
+                }, 200)
+            }
+            $('.forget-pass').click(function () {
+                var type = "1";
+                Swal.fire({
+                    title: 'Input your email',
+                    input: 'text',
+                    inputPlaceholder: 'Email...',
+                    inputAttributes: {
+                        autocapitalize: 'off'
+                    },
+                    heightAuto: false,
+                    showCancelButton: true,
+                    confirmButtonText: 'Send',
+                    showLoaderOnConfirm: true,
+                    preConfirm: (email) => {
+                        return fetch(`//localhost:44379/sendemailreset/?email=${email}&type=${type}`, { method: 'POST' })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(response.statusText)
+                                }
+                                return response.json()
+                            })
+                            .catch(error => {
+                                Swal.showValidationMessage(
+                                    `Request failed: ${error}`
+                                )
+                            })
+                    },
+                    allowOutsideClick: () => !Swal.isLoading()
+                }).then((result) => {
+                    if (result.value) {
+                        if (result.value == "success") {
+                            Swal.fire({
+                                type: 'success',
+                                position: 'top-end',
+                                title: 'Please check your email !',
+                                heightAuto: false,
+                                showConfirmButton: false
+                            })
+                        }
+                        else {
+                            Swal.fire({
+                                type: 'error',
+                                position: 'top-end',
+                                title: result.value,
+                                heightAuto: false,
+                                showConfirmButton: false
+                            })
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+}

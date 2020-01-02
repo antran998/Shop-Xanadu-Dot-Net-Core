@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewData["Title"]</title>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/assets1/css/animate.css" rel="stylesheet" />
+    <link href="~/assets1/FA5/css/fontawesome.min.css" rel="stylesheet">
+    <link href="~/assets1/FA5/css/brands.min.css" rel="stylesheet">
+    <link href="~/assets1/FA5/css/solid.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    @if (ViewData["Title"] != "Login" && ViewData["Title"] != "ResetPassword" && 
+        ViewData["Title"] != "CheckSms")
+    {
+        <link href="~/assets1/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/assets1/css/style.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/assets1/css/customStyle.css" rel="stylesheet" asp-append-version="true">
+    }
+
+    @RenderSection("Css", required: false)
+</head>
+@*<body class="header-fix fix-sidebar">*@
+<body>
+    @*<div class="awe-page-loading">
+            <div class="awe-loading-wrapper">
+                <div class="awe-loading-icon">
+                    <a asp-controller="home" asp-action="index"><img src="~/assets/images/logo.png" alt="images"></a>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>*@
+    @if (ViewData["Title"] != "Login" && ViewData["Title"] != "ResetPassword" && 
+        ViewData["Title"] != "CheckSms")
+    {
+        <!-- Main wrapper  -->
+        <div id="main-wrapper">
+            <!-- header header  -->
+            <div class="header">
+                <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                    <!-- Logo -->
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="home">                            
+                            <!-- Logo text -->
+                            <span><img src="~/assets/images/logo.png" alt="homepage" class="dark-logo" /></span>
+                        </a>
+                    </div>
+                    <!-- End Logo -->
+                    <div class="navbar-collapse">
+                        <!-- toggle and nav items -->
+                        <ul class="navbar-nav mr-auto mt-md-0">
+                            <!-- This is  -->
+                            <li class="nav-item"> <a class="nav-link toggle-nav hidden-md-up text-muted  " href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                            <li class="nav-item m-l-10"> <a class="nav-link sidebartoggle hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                            <!-- Messages -->
+                            <li class="nav-item dropdown mega-menu">                                
+                                <div class="dropdown-menu animated slideInDown">
+                                    <ul class="mega-menu-menu row">
+
+                                        <li class="col-lg-3  m-b-30">
+                                            <h4 class="m-b-20">Bitcoin BTC</h4>
+                                            <!-- Contact -->
+                                            <ul>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-3 col-xlg-3 m-b-30">
+                                            <h4 class="m-b-20">Bitcoin BTC</h4>
+                                            <!-- List style -->
+                                            <ul class="list-style-none">
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-3 col-xlg-3 m-b-30">
+                                            <h4 class="m-b-20">Bitcoin BTC</h4>
+                                            <!-- List style -->
+                                            <ul class="list-style-none">
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-3 col-xlg-3 m-b-30">
+                                            <h4 class="m-b-20">Bitcoin BTC</h4>
+                                            <!-- List style -->
+                                            <ul class="list-style-none">
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                                <li><a href="#"><i class="cc BTC"></i> Bitcoin Transaction</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <!-- End Messages -->
+                        </ul>
+                        <!-- User profile and search -->
+                        <ul class="navbar-nav my-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user"></i>
+                                    <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right animated slideInRight">
+                                    <ul class="dropdown-user">
+                                        <li>
+                                            <form class="log-out" asp-controller="Identity" asp-action="Logout" asp-area="admin" method="post">
+                                                <a href="#" title="My Account" onclick="Loggingout()">Log out</a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-- End header header -->
+            <!-- Left Sidebar  -->
+            <div class="left-sidebar">
+                <!-- Sidebar scroll-->
+                <div class="scroll-sidebar">
+                    <!-- Sidebar navigation-->
+                    <nav class="sidebar-nav">
+                        <ul id="sidebar-menu">
+                            <li>
+                                <a href="/Dashboard"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard </span></a>
+                            </li>
+                            <li>
+                                <a href="/ProductTypeMgn"><i class="fa fa-tachometer"></i><span class="hide-menu">Product Type Management </span></a>
+                            </li>
+                            <li>
+                                <a href="/UserRoleMgn"><i class="fa fa-tachometer"></i><span class="hide-menu">User Role Management </span></a>
+                            </li>
+                            <li>
+                                <a href="/BillMgn"><i class="fa fa-tachometer"></i><span class="hide-menu">Bill Management </span></a>
+                            </li>
+                            <li>
+                                <a href="/MailChimpMgn"><i class="fa fa-tachometer"></i><span class="hide-menu">Email Management </span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- End Sidebar navigation -->
+                </div>
+                <!-- End Sidebar scroll-->
+            </div>
+            <!-- End Left Sidebar  -->
+            <!-- Page wrapper  -->
+            <div class="page-wrapper">
+                <!-- Bread crumb -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-primary">@ViewData["Section"]</h3>
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
+                            <li class="breadcrumb-item active">@ViewData["Section"]</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- End Bread crumb -->
+                @RenderBody()
+            </div>
+            <!-- End Page wrapper  -->
+        </div>
+        <!-- End Wrapper -->
+    }
+    else
+    {
+        @RenderBody()
+    }
+
+
+    @if (ViewData["Title"] == "Login" && ViewData["Title"] == "ResetPassword" && 
+        ViewData["Title"] == "CheckSms")
+    {
+        <script type="text/javascript" src="~/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="~/assets/js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="~/assets/js/store.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+    }
+    else
+    {
+        <script src="~/assets1/js/lib/bootstrap/js/popper.min.js"></script>
+        <script src="~/assets1/js/lib/bootstrap/js/bootstrap.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="~/assets1/js/jquery.slimscroll.js"></script>
+        <!--Menu sidebar -->
+        <script src="~/assets1/js/sidebarmenu.js"></script>
+        <!--stickey kit -->
+        <script src="~/assets1/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <!--Custom JavaScript -->
+        <script src="~/assets1/js/custom.min.js"></script>
+        <script src="~/assets1/js/myscript.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+        <script>
+            function Loggingout() {
+                $('form.log-out').submit();
+            }
+        </script>
+    }
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

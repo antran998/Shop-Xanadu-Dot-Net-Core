@@ -1,0 +1,318 @@
+﻿@inject SignInManager<ApplicationUser> signInManager
+@model CoreShop_V2.Areas.Client.ViewModel.DetailViewModel
+@{
+    ViewData["Title"] = "ProductDetail";
+    ViewData["PageTitle"] = "Product Detail";
+}
+@section Sharing{
+    <title>@Model.HangHoa.ProductNameSeo</title>
+    <meta property="og:url" content="http://localhost:44379/product/@Model.HangHoa.CategoryNameSeo/@Model.HangHoa.ProductNameSeo" />
+    <meta property="og:type" content="@Model.HangHoa.CategoryNameSeo" />
+    <meta property="og:title" content="@Model.HangHoa.ProductNameSeo" />
+    <meta property="og:description" content="@Model.HangHoa.Describe" />
+    <meta property="og:image" content="http://localhost:44379/assets/images/items/@Model.HangHoa.Image" />
+    
+}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v5.0&appId=649446632250059&autoLogAppEvents=1"></script>
+
+<div class="main-content">
+    <div class="container">
+        <!-- foreach here-->>
+        <div class="product-details-content">
+            <div class="col-md-6 col-sm-6">
+                <div class="slider-for ">
+                    <div>
+                        <span class="zoom">
+                            <img class="zoom-images" src="~/assets/images/items/@Model.HangHoa.Image" alt="images">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="box-details-info">
+                    <div class="product-name">
+                        <h1 id="proId" pro-id="@Model.HangHoa.ProductId">@Model.HangHoa.ProductName</h1>
+                    </div>
+                    <!-- End product-name -->
+                    <div class="rating">
+                        <div class="overflow-h">
+                            <div class="icon-rating">
+                                @if (ViewBag.RatingAve == 0)
+                                {
+                                    <p>No Rating</p>
+                                }
+                                else
+                                {
+                                    @for (int i = 0; i < ViewBag.RatingAve; i++)
+                                    {
+                                        <input type="radio" checked="">
+                                        <label><i class="fa fa-star"></i></label>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Rating -->
+                    <div class="wrap-price">
+                        <p class="price-old">$@Model.HangHoa.Price</p>
+                        <p class="price">$@Model.HangHoa.DiscountPrice</p>
+                    </div>
+                    <!-- End Price -->
+                </div>
+                <!-- End box details info -->
+                <div class="options">
+                    <p>@Model.HangHoa.Describe</p>
+
+                    <!-- End action -->
+                    <div class="box space-30">
+                        <div class="row">
+                            <!-- End col-md-6 -->
+                            <div class="col-md-5">
+                                <div class="title">
+                                    <h3>QUALITY</h3>
+                                </div>
+                                <form enctype="multipart/form-data">
+                                    <input id="Quantity" data-step="1" value="1" title="Qty" min="1" size="4" type="number">
+                                </form>
+                            </div>
+                            <!-- End col-md-5 -->
+                        </div>
+                        <!-- End row -->
+                    </div>
+                    <!-- End row -->                    
+                    <div class="action">
+                        <a class="link-v1 add-cart" data-product_id="@Model.HangHoa.ProductId" title="Add to cart"><span>Add to cart</span></a>                        
+                    </div>
+                    <div class="social box">
+                        <h3>Share this :</h3>
+                        <div class="fb-share-button"
+                             data-href="http://localhost:44379/product/@Model.HangHoa.CategoryNameSeo/@Model.HangHoa.ProductNameSeo"
+                             data-layout="button_count">
+                        </div>
+                        <div class="fb-like"
+                             data-href="http://localhost:44379/products/@Model.HangHoa.CategoryNameSeo/@Model.HangHoa.ProductNameSeo"
+                             data-layout="standard"
+                             data-action="like"
+                             data-show-faces="true">
+                        </div>
+                    </div>
+                    <!-- End share -->
+                </div>
+                <!-- End Options -->
+            </div>
+        </div>
+        <!-- End product-details-content -->
+        <div class="hoz-tab-container space-padding-tb-30">
+            <ul class="tabs">
+                <li class="item" rel="customer">Customer Reviews</li>
+                <li class="item" rel="facebook">Facebook Reviews</li>
+            </ul>
+
+            <div class="tab-container">                
+                <div id="customer" class="tab-content">
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <form class="form-horizontal">
+                            <h3>Add a Review</h3>
+
+                            <div class="box rating">
+                                <p>Your Rating <span class="color">*</span></p>
+                                <ul>
+                                    <li>
+                                        <a title="rating">
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="active" title="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="form-group">
+                                <label class=" control-label" for="inputReview">Review <span class="color">*</span></label>
+                                <textarea class="form-control " id="inputReview"></textarea>
+                            </div>
+                            <a class="button-v1 sendReview" href="#" title="add tags">Send review</a>
+                        </form>
+                        <!----Display Review-->
+                    }
+                    else
+                    {
+                        <a href="/account/login"><h3 style="color:#bc9e6b;">Đăng nhập để bình luận </h3></a>
+                    }
+                    @foreach (var item in Model.DanhGia)
+                    {
+                        <div class="box border">
+                            <h3>@item.Account.Fullname</h3>
+                            <div class="icon-rating" style="float:right">
+                                @for (int i = 0; i < item.Ratings; i++)
+                                {
+
+                                    <input type="radio" checked="">
+                                    <label><i class="fa fa-star" style="color:#e4ba4a"></i></label>
+                                }
+                            </div>
+                            <p>@item.Comment</p>
+
+                        </div>
+
+
+                    }
+
+                </div>                
+                
+                <div id="facebook" class="tab-content">
+                    <div class="fb-comments" data-href="http://localhost:44379/product/@Model.HangHoa.CategoryNameSeo/@Model.HangHoa.ProductNameSeo" data-width="" data-numposts="5"></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- tab-container -->
+        <div class="title-text-v2 space-60">
+            <h3>Related Products</h3>
+        </div>
+        <!-- End title -->
+        <div class="upsell-product products ver2 furniture hover-shadow">
+            @foreach (var item in Model.RelateProduct)
+            {
+                <div class="item-inner">
+                    <div class="product">
+                        <div class="product-images">
+                            <a asp-controller="Products" asp-action="productdetail" asp-route-category="@item.CategoryNameSeo" asp-route-ProductName="@item.ProductNameSeo" title="product-images">
+                                <img class="primary_image" src="~/assets/images/items/@item.Image" alt="" />
+                            </a>
+                            <div class="action">
+                                <a class="wish" href="#" title="Wishlist"><i class="icon icon-heart"></i></a>
+                                <a class="zoom" asp-controller="Products" asp-action="productdetail" asp-route-category="@item.CategoryNameSeo" asp-route-ProductName="@item.ProductNameSeo" title="Quick view"><i class="icon icon-magnifier-add "></i></a>
+                                <a class="add-cart" data-product_id='@item.ProductId' title="Add to cart"><i class="icon-bag"></i></a>
+                            </div>
+                            <!-- End action -->
+                        </div>
+                        <a asp-controller="Products" asp-action="productdetail" asp-route-category="@item.CategoryNameSeo" asp-route-ProductName="@item.ProductNameSeo" title="Union Bed"><p class="product-title">@item.ProductName</p></a>
+                        <p class="product-price-old">$@item.Price</p>
+                        <p class="product-price">$@item.DiscountPrice</p>
+                    </div>
+                    <!-- End product -->
+                </div>
+            }
+        </div>
+    </div>
+    <!-- End container -->
+</div>
+<!-- End MainContent -->
+
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/jquery.zoom.js"></script>
+    <script type="text/javascript" src="~/assets/js/store.js"></script>
+    <script type="text/javascript">
+        $(document).on('ready', function () {
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                asNavFor: '.slider-nav'
+            });
+            $('.slider-nav').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                asNavFor: '.slider-for',
+                dots: false,
+                focusOnSelect: true
+            });
+            $('.zoom').zoom();
+        });
+    </script>
+    <script>
+
+        $('.add-cart').click(function () {
+            var id = $(this).attr('data-product_id');
+            $.ajax({
+                url: '@Url.Action("Buy", "ShoppingCart")',
+                type: "POST",
+                data: { id: id },
+                success: function (result) {
+
+                }
+
+            });
+        });
+       $('.sendReview').click(function () {
+            var inputReview = $('#inputReview').val();
+            var Ratings = $('.active>i').length;
+            var id = $('#proId').attr("pro-id");
+            
+            $.ajax({
+                url: '/products/AddComment',
+                type: "POST",
+                data: {
+                    inputReview: inputReview,
+                    Ratings: Ratings,
+                    ProductId:id
+                },
+                success: function (result) {
+                    window.location.reload();
+                }
+
+            });
+        });
+        $('.box.rating a').click(function () {
+            $('.active').removeClass("active");
+            $(this).addClass("active");
+        });
+    </script>
+    <script>
+        $(function () {
+            var amount =@Model.HangHoa.DiscountPrice;
+            gtag('event', 'view_item', {
+              "items": [
+                {
+                  "id": "@Model.HangHoa.ProductId",
+                  "name": "@Model.HangHoa.ProductName",
+                  "brand": "Apple",
+                  "category": "@Model.HangHoa.category.CategoryName",
+                  "quantity": 1,
+                  "price": amount
+                }
+              ]
+            });
+        })
+    </script>
+}
+
+
+
+
+

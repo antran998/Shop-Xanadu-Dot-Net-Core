@@ -1,0 +1,189 @@
+﻿@model CoreShop_V2.Areas.Client.ViewModel.CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+    ViewData["PageTitle"] = "Checkout";
+}
+
+<div class="main-content">
+    <div class="container container-ver2 space-padding-tb-30">
+        <div class="row head-cart">
+            <div class="col-md-4 space-30">
+                <div class="item active center">
+                    <p class="icon">01</p>
+                    <h3>Shopping cart</h3>
+                </div>
+            </div>
+            <!-- End col-md-4 -->
+            <div class="col-md-4 space-30">
+                <div class="item active center">
+                    <p class="icon">02</p>
+                    <h3>Check out</h3>
+                </div>
+            </div>
+            <!-- End col-md-4 -->
+            <div class="col-md-4 space-30">
+                <div class="item center">
+                    <p class="icon">03</p>
+                    <h3>Order completed</h3>
+                </div>
+            </div>
+            <!-- End col-md-4 -->
+        </div>
+    </div>
+    <!-- End container -->
+    <div class="cart-box-container check-out">
+        <div class="container container-ver2">
+            <div class="row">
+                @*<form class="form-horizontal" action="@ViewBag.payPalConfig.PostUrl" method="post">*@
+                 <form class="form-horizontal" asp-controller="calculation" asp-action="checkvalid" method="post">
+                     <div class="col-md-6">
+                         <h3 class="title-brand">Check out</h3>
+
+                         <div class="form-group col-md-12">
+                             <label asp-for="@Model.BillCheckout.CustomerName" class=" control-label">Customer Name <span class="color">*</span></label>
+                             <input type="text" asp-for="@Model.BillCheckout.CustomerName" placeholder="Type..." class="form-control">
+                             <span asp-validation-for="@Model.BillCheckout.CustomerName" class="text-danger"></span>
+                         </div>
+                         <div>
+                             <div class="form-group col-md-6">
+                                 <label asp-for="@Model.BillCheckout.CustomerEmail" class=" control-label">Email<span class="color">*</span></label>
+                                 <input asp-for="@Model.BillCheckout.CustomerEmail" type="text" placeholder="Type..." class="form-control">
+                                 <span asp-validation-for="@Model.BillCheckout.CustomerEmail" class="text-danger"></span>
+                             </div>
+                             <div class="form-group col-md-6">
+                                 <label asp-for="@Model.BillCheckout.CustomerPhone" class=" control-label">Phone Number<span class="color">*</span></label>
+                                 <input asp-for="@Model.BillCheckout.CustomerPhone" type="text" placeholder="Type..." class="form-control">
+                                 <span asp-validation-for="@Model.BillCheckout.CustomerPhone" class="text-danger"></span>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label asp-for="@Model.BillCheckout.CustomerAddress" class=" control-label">Address<span class="color">*</span></label>
+                             <input asp-for="@Model.BillCheckout.CustomerAddress" type="text" placeholder="Type..." class="form-control space-20">
+                             <span asp-validation-for="@Model.BillCheckout.CustomerAddress" class="text-danger"></span>
+                         </div>
+                         <a href="Account/Signup" class="space-50">Create an account?</a>
+
+                         @* PayPal Setting *@
+                         @*<input type="hidden" name="upload" value="1" />
+                         <input type="hidden" name="return" value="@Model.payPalConfig.ReturnUrl" />
+                         <input type="hidden" name="cmd" value="_cart" />
+                         <input type="hidden" name="business" value="@Model.payPalConfig.Business" />
+                         <input type="hidden" name="cancel_return" value="https://localhost:44379/Home" />*@
+                         @* End PayPal Setting *@
+                         @*</form>*@
+
+                     </div>
+                    <!-- End col-md-8 -->
+                    <div class="col-md-6 space-30">
+                        <div class="box">
+                            <h3 class="title-brand">Your Cart</h3>
+                            <div class="info-order">
+                                <div class="product-name">
+                                    <ul>
+                                        <li class="head">
+                                            <span class="name">PRODUCTS NAME</span>
+                                            <span class="qty">QTY</span>
+                                            <span class="total">SUB TOTAL</span>
+                                        </li>
+                                        @{
+                                            if (Model.cartItem != null)
+                                            {
+                                                int i = 1;
+                                                foreach (var item in Model.cartItem)
+                                                {
+                                                    //var priceConvert = item.product.DiscountPrice * 0.00004;
+                                                    var subTotal = item.product.DiscountPrice * item.Quantity;
+                                                    <li>
+                                                        <span class="name">@item.product.ProductName</span>
+                                                        <span class="qty">@item.Quantity</span>
+                                                        <span class="total">@subTotal $</span>
+                                                        @*<input type="hidden" name="item_number_@i" value="@i" />
+                                                        <input type="hidden" name="item_name_@i" value="@item.product.ProductName" />
+                                                        <input type="hidden" name="amount_@i" value="@priceConvert" />
+                                                        <input type="hidden" name="quantity_@i" value="@item.Quantity" />*@
+                                                    </li>
+
+                                                    i++;
+                                                }
+                                            }
+                                        }                                       
+                                    </ul>
+                                </div>
+                                <!-- End product-name -->
+                                @{ 
+                                    var finalprice = Model.cartItem.Sum(x => x.product.DiscountPrice * x.Quantity) + 2;
+                                }
+                                <ul class="product-order">
+                                    <li>
+                                        <span class="left">CART SUBTOTAL</span>
+                                        <span class="right">@Model.cartItem.Sum(x => x.product.DiscountPrice * x.Quantity) $</span>
+                                    </li>
+                                    <li>
+                                        <span class="left">SHIPPING & HANDLING</span>
+                                        <span class="right">2 $</span>
+                                    </li>
+                                    <li>
+                                        <span class="left">ORDER TOTAL</span>
+                                        <span class="right brand">@finalprice $</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End info-order -->
+                            <div class="payment-order box float-left">
+                                <ul class="tabs">
+                                    <li>
+                                        <i class="icon"></i>
+                                        <h4>PayPal</h4>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a class="link-v1 box lh-50 rt full" id="placeOrder" title="PLACE ORDER">PLACE ORDER</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End row -->
+        </div>
+        <!-- End container -->
+    </div>
+    <!-- End cat-box-container -->
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/engo-plugins.js"></script>
+    <script type="text/javascript" src="~/assets/js/store.js"></script>    
+    <script>
+        $(function () {
+            if ($('.form-group input').val() != "") {
+                $('.form-group input').focus();
+                $('.form-group input').focusout();
+            }
+
+            $('#placeOrder').click(function () {
+                if ($('.product-name .blank-cart').length == 0) {
+                    $('.form-horizontal').submit();
+                }
+                else {
+                    Swal.fire({
+                        type: 'error',
+                        text: 'Giỏ hàng trống'
+                    })
+                }
+            })            
+            if ($('.product-name ul li').length < 2){
+                var blankCart =
+                `
+                <li>
+                    <span class="name blank-cart" style="width:100%; text-align:center;">Giỏ hàng trống</span>
+                </li>
+                `;
+                $('.product-name ul').append(blankCart);
+            }            
+
+        });
+    </script>
+}

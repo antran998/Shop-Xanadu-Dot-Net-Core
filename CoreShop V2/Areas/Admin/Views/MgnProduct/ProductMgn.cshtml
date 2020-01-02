@@ -1,0 +1,260 @@
+﻿@model CoreShop_V2.Areas.Admin.ViewModel.ProductManagementViewModel
+
+@{
+    ViewData["Title"] = "ProductMgn";
+    ViewData["Section"] = "Product Management";
+}
+
+<!-- Container fluid  -->
+    <div class="container-fluid">
+        <!-- Start Page Content -->
+
+        @foreach (var type in Model.Types)
+        {
+            <div class="row item-row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title" data-name="@type.CategoryName">@type.CategoryName</h4>
+                            <span style="display:none" class="cate-id">@type.CateID</span>
+                            <button type="button" class="btn btn-success add-product-btn" data-toggle="modal" data-target="#AddProductModal"><i class="fas fa-plus"></i> Add Product</button>
+                            <div class="table-responsive m-t-40">
+                                <table class="product-table cool-table display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="id-row">Id</th>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Discount Price</th>
+                                            <th>Description</th>
+                                            <th>Options</th>
+                                        </tr>
+                                    </thead>
+                                    @*<tbody>
+                                        @foreach (var item in type.Products)
+                                        {
+                                            <tr>
+                                                <td class="id-row">@item.ProductId</td>
+                                                <td><img class="img-row" src="~/assets/images/items/@item.Image" alt="Hình sản phẩm" /></td>
+                                                <td>@item.ProductName</td>
+                                                <td>@item.Price</td>
+                                                <td>@item.DiscountPrice</td>
+                                                <td>@item.Describe</td>
+                                                <td>
+                                                    <button class="btn btn-danger btn-rounded delete-btn">Xóa</button>
+                                                    <button class="btn btn-info btn-rounded edit-button" data-toggle="modal" data-target="#EditModal">Sửa</button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>*@
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- End PAge Content -->
+        <div id="AddProductModal" class="modal animated fadeIn" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form enctype="multipart/form-data" asp-action="CreateProduct" asp-controller="MgnProduct" class="modal-content" method="post">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Product</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row" style="display:none;">
+                            <label asp-for="@Model.CreateProduct.CateName" class="col-lg-4 col-form-label">CateName <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.CreateProduct.CateName" id="cateName" class="form-control" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.CreateProduct.CateName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.CreateProduct.ProductName" class="col-lg-4 col-form-label">Name <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.CreateProduct.ProductName" class="form-control" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.CreateProduct.ProductName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.CreateProduct.Price" class="col-lg-4 col-form-label">Price <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.CreateProduct.Price" class="form-control" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.CreateProduct.Price" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.CreateProduct.DiscountPrice" class="col-lg-4 col-form-label">Discount Price <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.CreateProduct.DiscountPrice" class="form-control" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.CreateProduct.DiscountPrice" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.CreateProduct.Describe" class="col-lg-4 col-form-label">Description <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.CreateProduct.Describe" class="form-control" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.CreateProduct.Describe" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.CreateProduct.Image" class="col-lg-4 col-form-label">Image <span class="text-danger">*</span></label>
+                            <div class="col-lg-8 custom-file">
+                                <input asp-for="@Model.CreateProduct.Image" class="form-control custom-file-input">
+                                <label class="custom-file-label">Upload ..</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+                        <button type="submit" class="btn btn-info confirm-edit"><i class="fas fa-plus-square"></i> Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="EditModal" class="modal animated fadeIn" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form class="modal-content" enctype="multipart/form-data" asp-action="UpdateProduct" asp-controller="MgnProduct" method="post">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Product</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row" style="display:none">
+                            <label asp-for="@Model.UpdateProduct.ProductId" class="col-lg-4 col-form-label">Product Id <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.UpdateProduct.ProductId" class="form-control" id="editId" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.UpdateProduct.ProductId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row" style="display:none">
+                            <label asp-for="@Model.UpdateProduct.CateName" class="col-lg-4 col-form-label">Type Name <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.UpdateProduct.CateName" class="form-control" id="editCate" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.UpdateProduct.CateName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.UpdateProduct.ProductName" class="col-lg-4 col-form-label">Name <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.UpdateProduct.ProductName" class="form-control" id="editName" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.UpdateProduct.ProductName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.UpdateProduct.Price" class="col-lg-4 col-form-label">Price <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.UpdateProduct.Price" class="form-control" id="editPrice" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.UpdateProduct.Price" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.UpdateProduct.DiscountPrice" class="col-lg-4 col-form-label">Discount Price <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.UpdateProduct.DiscountPrice" class="form-control" id="editDiscount" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.UpdateProduct.DiscountPrice" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.UpdateProduct.Describe" class="col-lg-4 col-form-label">Description <span class="text-danger">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" asp-for="@Model.UpdateProduct.Describe" class="form-control" id="editDescribe" placeholder="Type in ..">
+                                <span asp-validation-for="@Model.UpdateProduct.Describe" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="@Model.UpdateProduct.Image" class="col-lg-4 col-form-label">Image <span class="text-danger">*</span></label>
+                            <div class="col-lg-8 custom-file">
+                                <input asp-for="@Model.UpdateProduct.Image" class="form-control custom-file-input">
+                                <label class="custom-file-label">Upload ..</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+                        <button type="submit" class="btn btn-info confirm-edit"><i class="fas fa-user-edit"></i> Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- End Container fluid  -->
+@section Scripts{
+    <script src="~/assets1/js/lib/datatables/datatables.min.js"></script>
+    <script src="~/assets1/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="~/assets1/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="~/assets1/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="~/assets1/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="~/assets1/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="~/assets1/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="~/assets1/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="~/assets1/js/lib/datatables/datatables-init.js" asp-append-version="true"></script>
+    <script>
+        $(function () {
+            $('.custom-file-input').on("change", function () {
+                var filename = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(filename);
+            })
+
+            $('.add-product-btn').click(function () {
+                var category = $(this).parent().find(".card-title").html();
+                $('#cateName').val(category);
+            })            
+            
+            var confirmed = window.location.href.search("created");
+            if (confirmed != -1) {
+                history.pushState(null, null, window.location.pathname);
+                Swal.fire({
+                    type: 'success',
+                    text: 'Success'
+                })
+            }
+        });    
+
+        function UpdateProduct(obj) {
+            var thisRow = $(obj).parents("tr");
+            var thisType = $(obj).parents(".card-body").find("h4");
+            $('#editId').val($(thisRow).find("td:first-child").html());
+            $('#editName').val($(thisRow).find("td:nth-child(3)").html());
+            $('#editPrice').val($(thisRow).find("td:nth-child(4)").html());
+            $('#editDiscount').val($(thisRow).find("td:nth-child(5)").html());
+            $('#editDescribe').val($(thisRow).find("td:nth-child(6)").html());
+            $('#editCate').val($(thisType).html());
+        }        
+
+        function DeleteProduct(obj) {
+            var thisItem = $(obj).parents('tr').find('td:first-child');
+            Swal.fire({
+                type: 'warning',
+                text: 'Are you sure ?',
+                customClass: {
+                    confirmButton: 'delete-product-confirm'
+                }
+            })
+            $(".delete-product-confirm").click(function () {
+                var thisRow = $(thisItem).parent();                 
+                $.ajax({
+                    url: "/DeleteProduct",
+                    type: "POST",
+                    data: {
+                        ProductId: $(thisItem).html(),
+
+                    },
+                    dataType: "json",
+                    success: function (result) {  
+                        if (result == "success") {
+                            $(thisRow).addClass("animated fadeOutLeft");
+                            $(thisRow).slideUp();
+                            setTimeout(function () {
+                                $('.product-table').DataTable().ajax.reload(null,false);
+                            }, 800)
+                        }                        
+                    }
+                });
+            })
+        }
+
+    </script>
+}

@@ -1,0 +1,157 @@
+﻿@model CoreShop_V2.Areas.Admin.ViewModel.UserManagementViewModel
+
+@{
+    ViewData["Title"] = "UserRoleMgn";
+    ViewData["Section"] = "User Role Management";
+}
+
+<!-- Container fluid  -->
+<div class="container-fluid">
+    <!-- Start Page Content -->
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6 search-section">
+            <label>Search</label>
+            <input type="text" class="find-type" placeholder="Find ..." />
+            @*<button class="btn btn-warning" data-toggle="modal" data-target="#AddRoleModal">Thêm Quyền</button>*@
+        </div>
+    </div>
+
+    <div class="row item-row">
+        <div class="col-2"></div>
+        @foreach (var role in Model.UserWithRole)
+        {
+            <div class="fx-wrap col-4">
+                <div class="card" data-href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQJW58uxpzvVMvRwWjeU840KqAKGhLNyMT0F5Qh4cgD9rUCihYh">
+                    <div class="front">
+                        <div class="image">
+                            <p class="heading">@role.RoleName</p>
+                        </div>
+                        <div class="text">
+                            <header class="clearfix">
+                                @if (role.RoleName != "Admin" && role.RoleName != "User")
+                                {
+                                    <button class="btn btn-danger delete-role-btn">X</button>
+                                }
+                                <button class="flip"><span class="zmdi zmdi-replay"></span></button>
+                            </header>
+                            <div class="img-type"><a asp-controller="MgnUser" asp-action="UserMgn" asp-route-roleId="@role.RoleId"><img class="img-row animated bounceIn" src="~/assets1/images/roles/@role.Image" alt="Hình sản phẩm" /></a></div>
+                            <a href="#">View list of users</a>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip"><span class="zmdi zmdi-replay"></span></button>
+                            </header><b>"Demo it or it didn't happen."</b>
+                            <p>I am considering making this into a Javascript component so you can all show off your business cards.<br /><i>	Thank you for your support! ❤</i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="col-2"></div>
+    </div>
+</div>
+<!-- End Container fluid  -->
+
+@*<div id="AddTypeModal" class="modal animated fadeIn" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-action="AddType" asp-controller="MgnProductType" method="post" class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm Loại Sản Phẩm</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-lg-4 col-form-label" asp-for="@Model.CreateType.CategoryName">Tên Loại <span class="text-danger">*</span></label>
+                    <div class="col-lg-8">
+                        <input type="text" style="text-transform: uppercase;" class="form-control" asp-for="@Model.CreateType.CategoryName" placeholder="Nhập vào ..">
+                        <span asp-validation-for="@Model.CreateType.CategoryName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Đóng</button>
+                <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Xác nhận</button>
+            </div>
+        </form>
+    </div>
+    <input type="text" id="createType" hidden value="@Model.CreateSuccess" />
+</div>*@
+
+@section Scripts{
+    <script>
+        //$(".delete-type-btn").click(function () {
+
+        //    Swal.fire({
+        //        type: 'warning',
+        //        text: 'Bạn chắc chắn muốn xóa loại này ?',
+        //        customClass: {
+        //            confirmButton: 'delete-type-confirm'
+        //        }
+        //    })
+
+        //    var thisRow = $(this).parents(".fx-wrap");
+
+        //    $(".delete-type-confirm").click(function () {
+
+        //        $.ajax({
+        //            url: "/DeleteType",
+        //            type: "POST",
+        //            data: {
+        //                Name: $(thisRow).find('.heading').html()
+        //            },
+        //            dataType: "json",
+        //            success: function (result) {
+
+        //                if (result != "success") {
+        //                    Swal.fire({
+        //                        type: 'error',
+        //                        text: result
+        //                    })
+        //                }
+        //                else {
+        //                    $(thisRow).addClass("animated zoomOut");
+        //                    $(thisRow).css("flex", "unset");
+        //                    $(thisRow).animate({width: 0});
+        //                    setTimeout(function () {
+        //                        $(thisRow).remove();
+        //                    }, 800)
+        //                }
+        //            }
+        //        });
+
+        //    })
+        //})
+
+        //if ($('#createType').val() != "") {
+        //    history.pushState(null, null, "/ProductTypeMgn");
+        //    Swal.fire({
+        //        type: 'success',
+        //        text: 'Thành công',
+        //        customClass: {
+        //            confirmButton: 'create-type-confirm'
+        //        }
+        //    });
+        //    $('.create-type-confirm').click(function () {
+        //        var thisCreated = $(".heading").filter(function () {
+        //            return $(this).text() === $('#createType').val();
+        //        });
+
+        //        $('html, body').animate({
+        //            scrollTop: $(thisCreated).offset().top - 100
+        //        }, 1000);
+        //        setTimeout(function () {
+        //            $(thisCreated).parents(".fx-wrap .front").addClass("color-change1");
+        //        }, 1100)
+        //    })
+        //}
+
+        $('.find-type').keyup(function () {
+            var text = $(this).val().charAt(0).toUpperCase() + $(this).val().slice(1);          
+            $('.item-row').find(".fx-wrap").hide();
+            $('.fx-wrap').find('.heading:contains(' + text + ')').parents(".fx-wrap").show();
+        })
+    </script>
+}

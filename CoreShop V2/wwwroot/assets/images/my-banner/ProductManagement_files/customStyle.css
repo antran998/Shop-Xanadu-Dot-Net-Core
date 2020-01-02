@@ -1,0 +1,73 @@
+﻿.add-role{
+    float: right;
+    display: inline-block;
+}
+.card-title{
+    display: inline-block;
+    text-transform: uppercase;
+}
+.role-table tr td:nth-child(2), .role-table tr th:nth-child(2) {
+    text-align: center;
+}
+.role-table tr td:first-child, .role-table tr th:first-child {
+    width: 50%;
+}
+.role-table tr td:last-child, .role-table tr th:last-child {
+    width: 40%;
+}
+table.table-striped tr th:last-child{
+    text-align:right;
+}
+.add-user-btn, .delete-type-btn {
+    float: right;
+}
+.add-user-btn{
+    margin-right: 10px;
+}
+    .modal-header .close {
+        font-size: unset;
+        margin: unset;
+        padding: unset;
+    }
+.modal-dialog{
+    top:45%;
+}
+.modal-body .form-group:last-child{
+    margin-bottom: 10px;
+}
+.id-row{
+    display:none;
+}
+.search-section{
+    text-align: right;
+}
+    .search-section label, .search-section input {
+        margin-right: 10px;
+    }
+    .search-section input{
+        padding-left: 5px;
+    }
+
+@keyframes Colorchange1{
+    20% {
+        background: #ffb22b;
+    }
+    40%{
+        background: white;
+    }
+    60% {
+        background: #ffb22b;
+    }
+    80%{
+        background: white;
+    }
+}
+.color-change1{
+    animation: Colorchange1 1s forwards;
+}
+.dataTables_empty{
+    text-align: center !important;
+}
+.hidden-search{
+    display: none;
+}

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Mail Xanadu</title>
+    
+    <style type="text/css">
+        table {
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 610px;
+            width: 434px;
+            text-align: center;
+        }
+
+        u {
+            color: #f9ac1b;
+        }
+
+        h3 {
+            height: 90px;
+        }
+
+        .btf--bg {
+            background: black;
+            color: #f9ac1b;
+            border-radius: 10px;
+            padding: 0 15px;
+        }
+
+        table {
+            margin: auto;
+        }
+        .custom-btn {
+            height: 35px;
+            border-color: gold;
+            background: #f9ac1b;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .custom-btn:hover {
+            background: gold;
+        }
+    </style>
+</head>
+<body>
+
+
+    <table border="0" cellspacing="0" cellpadding="20" background="http://localhost:44379/assets/images/form-mail.png">
+        <tr>
+            <td>            
+                <div style="height:15%;"></div>
+                <div>
+                    <h2>
+                        <!-- Title -->
+                        <span class="welcome--bg">{0}</span>
+                        <span class="btf--bg">XANADU</span> <!-- Title color --> 
+                    </h2>
+                </div>
+                <div>
+                    <p style="padding-top:10px;">{1}</p>
+                </div>
+                <div style="padding-top:5px;">
+                    <a href="{2}"><button class="custom-btn" style="font-weight:bold;">{3}</button></a>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+</html>

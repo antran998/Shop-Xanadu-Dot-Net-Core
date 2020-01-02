@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "CheckSms";
+}
+
+@section Css{
+    <link href="~/assets1/css/checkcodesms.css" rel="stylesheet" asp-append-version="true"/>
+}
+
+<div class="container">
+    <form id="form">
+        <h1>PHONE NUMBER CHECKING</h1>
+        <input type="password" name="sid" id="sid" hidden value="@ViewData["verSid"]" />
+        <div class="form__group form__pincode">
+            <label>Enter 6-digit code we have send to you</label>
+            <input type="tel" name="pincode-1" maxlength="1" pattern="[\d]*" tabindex="1" placeholder="·" autocomplete="off">
+            <input type="tel" name="pincode-2" maxlength="1" pattern="[\d]*" tabindex="2" placeholder="·" autocomplete="off">
+            <input type="tel" name="pincode-3" maxlength="1" pattern="[\d]*" tabindex="3" placeholder="·" autocomplete="off">
+            <input type="tel" name="pincode-4" maxlength="1" pattern="[\d]*" tabindex="4" placeholder="·" autocomplete="off">
+            <input type="tel" name="pincode-5" maxlength="1" pattern="[\d]*" tabindex="5" placeholder="·" autocomplete="off">
+            <input type="tel" name="pincode-6" maxlength="1" pattern="[\d]*" tabindex="6" placeholder="·" autocomplete="off">
+        </div>
+        <div class="form__buttons">
+            <a href="#" id="sendAgain" class="button button--primary">Send Again</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts{    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/jquery.inputmask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mockjax@2.2.2/src/jquery.mockjax.min.js"></script>
+    <script src="~/assets1/js/checkcodesms.js" asp-append-version="true"></script>
+    <script>
+        $("#sendAgain").click(function () {
+            window.location.reload();
+        })
+    </script>
+}

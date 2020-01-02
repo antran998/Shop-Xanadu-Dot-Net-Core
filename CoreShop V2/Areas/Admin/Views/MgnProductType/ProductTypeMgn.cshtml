@@ -1,0 +1,162 @@
+﻿@model CoreShop_V2.Areas.Admin.ViewModel.ProductManagementViewModel
+
+@{
+    ViewData["Title"] = "ProductTypeMgn";
+    ViewData["Section"] = "Product Type Management";
+}
+
+<!-- Container fluid  -->
+<div class="container-fluid">
+    <!-- Start Page Content -->
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6 search-section">
+            <label>Search</label>
+            <input type="text" class="find-type" placeholder="Find..." />
+            <button class="btn btn-warning" data-toggle="modal" data-target="#AddTypeModal">Add Type</button>
+        </div>
+    </div>
+
+    <div class="row item-row">
+        @foreach (var item in Model.Types)
+        {
+            <div class="fx-wrap col-4">
+                <div class="card" data-href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZIbTuWRSqUVqo_Qdo4O9PKBwhRuwHBcmDdJlDez5oSwdXel-7pw">                    
+                    <div class="front">
+                        <div class="image">
+                            <p class="heading">@item.CategoryName</p>
+                        </div>
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="btn btn-danger delete-type-btn">X</button>
+                                <button class="flip"><span class="zmdi zmdi-replay"></span></button>
+                            </header>
+                            @if (item.Products.Any())
+                            {
+                                <div class="img-type"><a asp-controller="MgnProduct" asp-action="ProductMgn" asp-route-typeId="@item.CateID"><img class="img-row animated bounceIn" src="~/assets/images/items/@item.Products[0].Image" alt="Hình sản phẩm" /></a></div>
+                                <a asp-controller="MgnProduct" asp-action="ProductMgn" asp-route-typeId="@item.CateID">View list of items</a>
+                            }
+                            else
+                            {
+                                <div class="img-type"><a asp-controller="MgnProduct" asp-action="ProductMgn" asp-route-typeId="@item.CateID"><img class="img-row animated bounceIn" src="~/assets/images/items/box.png" alt="Hình sản phẩm" /></a></div>
+                                <a asp-controller="MgnProduct" asp-action="ProductMgn" asp-route-typeId="@item.CateID">View list of items</a>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="btn btn-danger delete-type-btn">X</button>
+                                <button class="flip"><span class="zmdi zmdi-replay"></span></button>
+                            </header><b>"You can flip me all day."</b>
+                            <p>I have flexbox with fallbacks, I'm not browser prefixed (so watch out, this is a prototype) but my animations are pure css if your into that sort of thing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- End Container fluid  -->
+
+<div id="AddTypeModal" class="modal animated fadeIn" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-action="AddType" asp-controller="MgnProductType" method="post" class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Type</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label class="col-lg-4 col-form-label" asp-for="@Model.CreateType.CategoryName">Name <span class="text-danger">*</span></label>
+                    <div class="col-lg-8">
+                        <input type="text" style="text-transform: lowercase;" class="form-control" asp-for="@Model.CreateType.CategoryName" placeholder="Type ..">
+                        <span asp-validation-for="@Model.CreateType.CategoryName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Confirm</button>
+            </div>
+        </form>
+    </div>
+    <input type="text" id="createType" hidden value="@Model.CreateSuccess" />
+</div>
+
+@section Scripts{
+    <script>
+        $(".delete-type-btn").click(function () {
+
+            Swal.fire({
+                type: 'warning',
+                text: 'Are you sure ?',
+                customClass: {
+                    confirmButton: 'delete-type-confirm'
+                }
+            })
+
+            var thisRow = $(this).parents(".fx-wrap");
+
+            $(".delete-type-confirm").click(function () {
+
+                $.ajax({
+                    url: "/DeleteType",
+                    type: "POST",
+                    data: {
+                        Name: $(thisRow).find('.heading').html()
+                    },
+                    dataType: "json",
+                    success: function (result) {
+
+                        if (result != "success") {
+                            Swal.fire({
+                                type: 'error',
+                                text: result
+                            })
+                        }
+                        else {
+                            $(thisRow).addClass("animated zoomOut");                            
+                            $(thisRow).css("flex", "unset");
+                            $(thisRow).animate({width: 0});
+                            setTimeout(function () {
+                                $(thisRow).remove();
+                            }, 800)
+                        }
+                    }
+                });
+                
+            })
+        })
+
+        if ($('#createType').val() != "") {
+            history.pushState(null, null, "/ProductTypeMgn");
+            Swal.fire({
+                type: 'success',
+                text: 'Success',
+                customClass: {
+                    confirmButton: 'create-type-confirm'
+                }
+            });
+            $('.create-type-confirm').click(function () {
+                var thisCreated = $(".heading").filter(function () {
+                    return $(this).text() === $('#createType').val();
+                });
+
+                $('html, body').animate({
+                    scrollTop: $(thisCreated).offset().top - 100
+                }, 1000);
+                setTimeout(function () {
+                    $(thisCreated).parents(".fx-wrap .front").addClass("color-change1");
+                }, 1100)
+            })
+        }
+
+        $('.find-type').keyup(function () {
+            var text = $(this).val().toLowerCase();
+            $('.item-row').find(".fx-wrap").hide();
+            $('.fx-wrap').find('.heading:contains(' + text + ')').parents(".fx-wrap").show();
+        })
+    </script>
+}
